@@ -52,7 +52,7 @@ http://localhost:3000
 
 ### 📌 Registrar usuário
 
-**POST** `/register`
+**POST** `/api/auth/register`
 
 ```json
 {
@@ -67,7 +67,7 @@ http://localhost:3000
 
 ### 📌 Login de usuário
 
-**POST** `/login`
+**POST** `/api/auth/login`
 
 ```json
 {
@@ -88,7 +88,7 @@ http://localhost:3000
 
 ### 📌 Recuperar senha
 
-**POST** `/reset-password`
+**POST** `/api/auth/reset-password`
 
 ```json
 {
@@ -110,13 +110,13 @@ Authorization: Bearer seu_token
 
 ### 📌 Buscar todos os exames
 
-**GET** `/todosOsExames`
+**GET** `/api/exames/todosOsExames`
 
 ---
 
 ### 📌 Adicionar exame
 
-**POST** `/addExames`
+**POST** `/api/exames/addExames`
 
 ```json
 {
@@ -132,7 +132,7 @@ Authorization: Bearer seu_token
 
 ### 📌 Atualizar exame por ID
 
-**PUT** `/updateExame/:id`
+**PUT** `/api/exames/updateExame/:id`
 
 ```json
 {
@@ -144,7 +144,7 @@ Authorization: Bearer seu_token
 
 ### 📌 Deletar exame por ID
 
-**DELETE** `/removeExame/:id`
+**DELETE** `/api/exames/removeExame/:id`
 
 ---
 
@@ -183,6 +183,6 @@ src/
 
 ## 📌 Autor
 
-Desenvolvido por **Italo Prado**
+Desenvolvido por **Italo Marcelo**
 
 ---
