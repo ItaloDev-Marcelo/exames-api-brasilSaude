@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const ExamesSchema = new mongoose.Schema({
-    paciente: {
+    nome: {
         type: String,
         required: true,
         trim: true,
@@ -12,7 +12,7 @@ const ExamesSchema = new mongoose.Schema({
         required: true,
         trim: true,
     },
-    data: {
+    descricao: {
         type: String,
         required: true,
     },
