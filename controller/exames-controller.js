@@ -96,5 +96,4 @@ const deleteExame = async (req, res) => {
 }
 
 
-module.exports = 
-{allExames,addExames, updateExames, deleteExame}
+module.exports = {allExames,addExames, updateExames, deleteExame}
