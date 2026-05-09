@@ -4,7 +4,7 @@ const User = require('../models/User');
 
 const authController = async (req,res) => {
   try {
-    const {name, email,password, role} = req.body;
+    const {name,email,password} = req.body;
 
     const userExists = await User.findOne({
         $or: [{name}, {email}],
@@ -25,11 +25,9 @@ const authController = async (req,res) => {
     const newlyCreaterUser = new User({
         name,
         email,
-        password: newHashedPassword,
-        role: role || 'user'
+        password: newHashedPassword
     })
 
-    console.log(req.body)
 
     await newlyCreaterUser.save();
 
@@ -84,8 +82,7 @@ const loginController = async (req,res) => {
     const accessToken = jwt.sign(
         {
             userId: user._id,
-            email: user.email,
-            role : user.role 
+            email: user.email
         },
            process.env.JWT_SECRET_KEY,
         {
