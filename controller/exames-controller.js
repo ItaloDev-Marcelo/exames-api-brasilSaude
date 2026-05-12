@@ -6,7 +6,7 @@ const allExames = async (req, res) => {
      if(all?.length > 0) {
         return res.status(200).json({
             success: false,
-            message: 'exames found !',
+            message: 'Arquivos de exames encontrados!',
             examStatus: all
         })
      }
@@ -14,7 +14,7 @@ const allExames = async (req, res) => {
      console.log(e)
      res.status(500).json({
         success: false,
-        message: 'something went wrong please try again'
+        message: 'Algo saiu errado, Por favor tente novamente!'
      })
     }
 }
@@ -27,14 +27,14 @@ const addExames = async (req, res) => {
       if(exameAdd) {
         return res.status(200).json({
             success: true,
-            message: 'new exame add to the database !'
+            message: 'Novo arquivo de exame adicionado!'
         })
       }
     }catch(e) {
      console.log(e)
      res.status(500).json({
         success: false,
-        message: 'something went wrong please try again'
+        message: 'Algo saiu errado, Por favor tente novamente!'
      })
     }
 }
@@ -43,18 +43,21 @@ const updateExames = async (req, res) => {
     try {
      const AllExames = req.body
      const currentExame = req.params.id;
-     const updateExame = await Exames.findOneAndUpdate(currentExame,AllExames, {new: true});
-
+ const updateExame = await Exames.findByIdAndUpdate(
+  currentExame,
+  AllExames,
+  { returnDocument: 'after' }
+)
 
      if(!updateExame) {
         return res.status(400).json({
             success: false,
-            message: 'data not found please try again'
+            message: 'Arquivo não encontrada, Por favor tente novamente'
         })
      } else {
         return res.status(200).json({
             success: true,
-            message: 'Exame updated successfully!',
+            message: 'Arquivo de exame atualizado com sucesso !',
             examStatus: updateExame
         })
      }
@@ -63,7 +66,7 @@ const updateExames = async (req, res) => {
         console.log(e)
      res.status(500).json({
         success: false,
-        message: 'something went wrong please try again'
+        message: 'Algo saiu errado, Por favor tente novamente!'
      })
     }
 }
@@ -76,24 +79,24 @@ const deleteExame = async (req, res) => {
        if(!deletedExame) {
          return res.status(404).json({
             success: false,
-            message: 'not user found with this ID, please try again'
+            message: 'Nenhum arquivo encontrado com esse ID, Por favor tente novamente'
          })
         }
 
            res.status(200).json({
                     success: true,
-                    message: 'User deleted successfully !'
+                    message: 'Arquivo deletado com sucesso !'
                  })
         
       }catch(e) {
         console.log(e)
      res.status(500).json({
         success: false,
-        message: 'something went wrong please try again'
+        message: 'Algo saiu errado, Por favor tente novamente!'
      })
       }
      
 }
 
 
-module.exports = {allExames,addExames, updateExames, deleteExame}
+module.exports = {allExames,addExames,updateExames,deleteExame}
