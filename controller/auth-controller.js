@@ -28,25 +28,24 @@ const authController = async (req,res) => {
         password: newHashedPassword
     })
 
-
     await newlyCreaterUser.save();
 
     if(newlyCreaterUser) {
        res.status(201).json({
             success: true,
-            message: 'User registered with success'
+            message: 'Usuario registrado com sucesso'
         })
     }else {
        res.status(404).json({
             success: false,
-            message: 'unable to registration user please try again.!'
+            message: 'Não foi possível cadastrar o usuário. Por favor, tente novamente.!'
         })
     }
   }catch(e) {
      console.log(e)
      res.status(500).json({
         success: false,
-        message: 'some error occured, please try again'
+        message: 'ocorreu algum error, Por favor tente novamente'
      })
   }
 
@@ -63,7 +62,7 @@ const loginController = async (req,res) => {
     if(!user) {
         return res.status(400).json({
             success: false,
-            message: 'User not found please try again '
+            message: 'Usuario não encontrado, Por favor tente novamente! '
         })
     }
     // criar bear token  
@@ -75,7 +74,7 @@ const loginController = async (req,res) => {
     if(!passwordMatched) {
        return res.status(400).json({
         success: false,
-        message: 'Invalid credentials'
+        message: 'Credencias invalidas'
        })
     }
 
@@ -93,7 +92,7 @@ const loginController = async (req,res) => {
 
     res.status(201).json({
         success: true,
-        message: 'User logged in success',
+        message: 'Usuario logado com sucesso',
         accessToken
     })
 
@@ -101,7 +100,7 @@ const loginController = async (req,res) => {
         console.log(e)
      res.status(500).json({
         success: false,
-        message: 'some error occured, please try again'
+        message: 'ocorreu algum error, Por favor tente novamente'
      })
     }
 
@@ -118,7 +117,7 @@ const resetPasswordController = async (req,res) => {
     if(!userId) {
         return res.status(400).json({
             success: false,
-            message: `User do not exist`
+            message: `Usuario não existe!`
         })
     } 
 
@@ -127,7 +126,7 @@ const resetPasswordController = async (req,res) => {
     if(!isPasswordMatched) {
          return res.status(400).json({
             success: false,
-            message: 'Old password is not correct! Please try again.'
+            message: 'A senha antiga nao esta correta ! Por favor tente novamente'
          })
     }
 
@@ -140,13 +139,13 @@ const resetPasswordController = async (req,res) => {
      
     res.status(200).json({
         success: true,
-        message: 'Password changed with sucess!'
+        message: 'Senha foi atualizada com sucesso!'
     })
    }catch(e) {
     console.log(e)
         res.status(500).json({
         success: false,
-        message: 'some error occured, please try again'
+        message: 'ocorreu algum error, Por favor tente novamente'
      })
    }
 }
