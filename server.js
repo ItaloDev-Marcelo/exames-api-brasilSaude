@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT;
 const connectToDb = require('./database/database');
 const authRoute = require('./routes/auth')
-const examesRoute = require('./routes/user')
+const examesRoute = require('./routes/arquivo')
 connectToDb();
 
 app.use(express.json())
